@@ -13,6 +13,14 @@ interface LeadSubmission {
     kaufpreisAlt: number;
     marktwert: number;
     yearlySavings: number;
+    afaAlt: number;
+    afaNeu: number;
+    zinskosten: number;
+    gesamtAbsetzbarAlt: number;
+    gesamtAbsetzbarNeu: number;
+    steuerAlt: number;
+    steuerNeu: number;
+    cumulativeSavings: number[];
   };
 }
 
@@ -65,6 +73,15 @@ Deno.serve(async (req: Request) => {
       throw error;
     }
 
+    const formatEUR = (value: number) => {
+      return new Intl.NumberFormat('de-DE', {
+        style: 'currency',
+        currency: 'EUR',
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0
+      }).format(value);
+    };
+
     await fetch("https://api.brevo.com/v3/smtp/email", {
       method: "POST",
       headers: {
@@ -77,22 +94,122 @@ Deno.serve(async (req: Request) => {
           email: "kontakt@capri-consult.de",
         },
         to: [{ email: email }],
-        subject: "Ihre Ehegattenschaukel-Berechnung",
+        subject: "Deine Ehegattenschaukel-Berechnung",
         htmlContent: `
-          <h2>Vielen Dank für Ihr Interesse!</h2>
-          <p>Sie haben den Ehegattenschaukel-Rechner von CAPRI CONSULT verwendet.</p>
-          ${calculation_details ? `
-            <h3>Ihre Berechnung:</h3>
-            <ul>
-              <li>Ursprünglicher Kaufpreis: ${calculation_details.kaufpreisAlt.toLocaleString('de-DE')} €</li>
-              <li>Aktueller Marktwert: ${calculation_details.marktwert.toLocaleString('de-DE')} €</li>
-              <li>Jährliche Steuerersparnis: ${calculation_details.yearlySavings.toLocaleString('de-DE')} €</li>
-            </ul>
-          ` : ''}
-          <p>Möchten Sie mehr über die Umsetzung erfahren? Vereinbaren Sie ein kostenloses Beratungsgespräch:</p>
-          <p><a href="https://www.capri-consult.de/kontakt/" style="background-color: #1c1e65; color: white; padding: 12px 24px; text-decoration: none; display: inline-block;">Jetzt Beratungsgespräch vereinbaren</a></p>
-          <p>Mit freundlichen Grüßen,<br>Ihr CAPRI CONSULT Team</p>
-          <p style="font-size: 12px; color: #666;">CAPRI CONSULT<br>kontakt@capri-consult.de</p>
+          <!DOCTYPE html>
+          <html>
+          <head>
+            <meta charset="UTF-8">
+            <style>
+              body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+              .container { max-width: 600px; margin: 0 auto; }
+              .header { background-color: #1c1e65; color: white; padding: 30px; text-align: center; }
+              .content { padding: 30px; }
+              .highlight-box { background-color: #94fab7; color: #1c1e65; padding: 30px; text-align: center; margin: 20px 0; }
+              .highlight-box h3 { font-size: 32px; margin: 10px 0; }
+              table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+              th, td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
+              th { background-color: #1c1e65; color: white; text-align: center; }
+              td:first-child { font-weight: bold; }
+              td:nth-child(2), td:nth-child(3) { text-align: center; }
+              .savings-table td:nth-child(2) { color: #dc2626; }
+              .savings-table td:nth-child(3) { color: #16a34a; }
+              .chart-data { background-color: #f3f4f6; padding: 20px; margin: 20px 0; }
+              .chart-data h4 { color: #1c1e65; margin-bottom: 15px; }
+              .chart-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #ddd; }
+              .cta-button { background-color: #94fab7; color: #1c1e65; padding: 15px 30px; text-decoration: none; display: inline-block; font-weight: bold; margin: 20px 0; }
+              .footer { background-color: #1c1e65; color: white; padding: 30px; text-align: center; margin-top: 30px; }
+              .total-box { background-color: #1c1e65; color: white; padding: 20px; text-align: center; margin: 20px 0; }
+              .total-box h4 { font-size: 28px; margin: 10px 0; }
+            </style>
+          </head>
+          <body>
+            <div class="container">
+              <div class="header">
+                <h1>Deine Ehegattenschaukel-Berechnung</h1>
+                <p>Eine Auswertung von CAPRI CONSULT</p>
+              </div>
+
+              <div class="content">
+                <h2>Vielen Dank für dein Interesse!</h2>
+                <p>Du hast den Ehegattenschaukel-Rechner von CAPRI CONSULT verwendet. Hier sind deine vollständigen Ergebnisse:</p>
+
+                ${calculation_details ? `
+                  <div class="highlight-box">
+                    <p style="font-size: 18px; margin: 0;">Deine jährliche Steuerersparnis</p>
+                    <h3>${formatEUR(calculation_details.yearlySavings)}</h3>
+                    <small>pro Jahr</small>
+                  </div>
+
+                  <h3>📋 Detaillierte Vergleichstabelle</h3>
+                  <table class="savings-table">
+                    <thead>
+                      <tr>
+                        <th></th>
+                        <th>Vorher</th>
+                        <th>Nachher</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>AfA (Abschreibung)</td>
+                        <td>${formatEUR(calculation_details.afaAlt)}</td>
+                        <td>${formatEUR(calculation_details.afaNeu)}</td>
+                      </tr>
+                      <tr>
+                        <td>Zinsaufwendungen</td>
+                        <td>0 €</td>
+                        <td>${formatEUR(calculation_details.zinskosten)}</td>
+                      </tr>
+                      <tr>
+                        <td>Gesamt absetzbar</td>
+                        <td>${formatEUR(calculation_details.gesamtAbsetzbarAlt)}</td>
+                        <td>${formatEUR(calculation_details.gesamtAbsetzbarNeu)}</td>
+                      </tr>
+                      <tr>
+                        <td>Steuerersparnis (jährlich)</td>
+                        <td>${formatEUR(calculation_details.steuerAlt)}</td>
+                        <td>${formatEUR(calculation_details.steuerNeu)}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <h3>🏠 Deine Eingabedaten</h3>
+                  <ul>
+                    <li><strong>Ursprünglicher Kaufpreis:</strong> ${formatEUR(calculation_details.kaufpreisAlt)}</li>
+                    <li><strong>Aktueller Marktwert:</strong> ${formatEUR(calculation_details.marktwert)}</li>
+                  </ul>
+
+                  <div class="chart-data">
+                    <h4>📊 10-Jahres-Vorschau: Kumulierte Steuerersparnis</h4>
+                    ${calculation_details.cumulativeSavings.map((savings, index) => `
+                      <div class="chart-row">
+                        <span><strong>Jahr ${index + 1}:</strong></span>
+                        <span>${formatEUR(savings)}</span>
+                      </div>
+                    `).join('')}
+                  </div>
+
+                  <div class="total-box">
+                    <p style="font-size: 18px; margin: 0;">Gesamtersparnis nach 10 Jahren</p>
+                    <h4>${formatEUR(calculation_details.cumulativeSavings[9])}</h4>
+                  </div>
+                ` : ''}
+
+                <h3>💡 Möchtest du diese Steuerersparnis nutzen?</h3>
+                <p>Unsere Experten von CAPRI CONSULT unterstützen dich bei der rechtssicheren Umsetzung der Ehegattenschaukel und vielen weiteren Steuertricks.</p>
+
+                <a href="https://www.capri-consult.de/kontakt/" class="cta-button">Jetzt kostenfreie Erstberatung vereinbaren</a>
+              </div>
+
+              <div class="footer">
+                <p><strong>CAPRI CONSULT</strong></p>
+                <p>kontakt@capri-consult.de</p>
+                <p style="font-size: 12px; margin-top: 20px;">Diese E-Mail wurde automatisch generiert, weil du den Ehegattenschaukel-Rechner verwendet hast.</p>
+              </div>
+            </div>
+          </body>
+          </html>
         `,
       }),
     });
