@@ -101,7 +101,8 @@ Deno.serve(async (req: Request) => {
           <head>
             <meta charset="UTF-8">
             <style>
-              body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; background-color: #ffffff; }
+              @import url('https://fonts.googleapis.com/css2?family=Effra:wght@400;700&display=swap');
+              body { font-family: 'Effra', Arial, sans-serif; line-height: 1.6; color: #333; background-color: #ffffff; }
               .container { max-width: 600px; margin: 0 auto; background-color: #ffffff; }
               .header { background-color: #1c1e65; color: white; padding: 30px; text-align: center; }
               .content { padding: 30px; background-color: #ffffff; }
