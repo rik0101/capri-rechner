@@ -101,26 +101,33 @@ Deno.serve(async (req: Request) => {
           <head>
             <meta charset="UTF-8">
             <style>
-              body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
-              .container { max-width: 600px; margin: 0 auto; }
+              body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; background-color: #ffffff; }
+              .container { max-width: 600px; margin: 0 auto; background-color: #ffffff; }
               .header { background-color: #1c1e65; color: white; padding: 30px; text-align: center; }
-              .content { padding: 30px; }
-              .highlight-box { background-color: #94fab7; color: #1c1e65; padding: 30px; text-align: center; margin: 20px 0; }
-              .highlight-box h3 { font-size: 32px; margin: 10px 0; }
-              table { width: 100%; border-collapse: collapse; margin: 20px 0; }
-              th, td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
-              th { background-color: #1c1e65; color: white; text-align: center; }
-              td:first-child { font-weight: bold; }
+              .content { padding: 30px; background-color: #ffffff; }
+              .highlight-box { background-color: #94fab7; color: #1c1e65; padding: 30px; text-align: center; margin: 20px 0; border-radius: 8px; }
+              .highlight-box h3 { font-size: 32px; margin: 10px 0; font-weight: bold; }
+              table { width: 100%; border-collapse: collapse; margin: 20px 0; background-color: #ffffff; border: 2px solid #1c1e65; }
+              th, td { padding: 12px; text-align: left; border-bottom: 1px solid #e5e7eb; }
+              th { background-color: #1c1e65; color: white; text-align: center; font-weight: bold; }
+              td:first-child { font-weight: bold; color: #1c1e65; }
               td:nth-child(2), td:nth-child(3) { text-align: center; }
-              .savings-table td:nth-child(2) { color: #dc2626; }
-              .savings-table td:nth-child(3) { color: #16a34a; }
-              .chart-data { background-color: #f3f4f6; padding: 20px; margin: 20px 0; }
-              .chart-data h4 { color: #1c1e65; margin-bottom: 15px; }
-              .chart-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #ddd; }
-              .cta-button { background-color: #94fab7; color: #1c1e65; padding: 15px 30px; text-decoration: none; display: inline-block; font-weight: bold; margin: 20px 0; }
+              .savings-table td:nth-child(2) { color: #1c1e65; }
+              .savings-table td:nth-child(3) { color: #1c1e65; font-weight: bold; }
+              .chart-data { background-color: #ffffff; padding: 20px; margin: 20px 0; border: 2px solid #1c1e65; border-radius: 8px; }
+              .chart-data h4 { color: #1c1e65; margin-bottom: 15px; font-weight: bold; }
+              .chart-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #e5e7eb; }
+              .chart-row:last-child { border-bottom: none; }
+              .chart-row span:last-child { font-weight: bold; color: #1c1e65; }
+              .cta-button { background-color: #94fab7; color: #1c1e65; padding: 15px 30px; text-decoration: none; display: inline-block; font-weight: bold; margin: 20px 0; border-radius: 4px; }
               .footer { background-color: #1c1e65; color: white; padding: 30px; text-align: center; margin-top: 30px; }
-              .total-box { background-color: #1c1e65; color: white; padding: 20px; text-align: center; margin: 20px 0; }
-              .total-box h4 { font-size: 28px; margin: 10px 0; }
+              .total-box { background-color: #1c1e65; color: white; padding: 20px; text-align: center; margin: 20px 0; border-radius: 8px; }
+              .total-box h4 { font-size: 28px; margin: 10px 0; font-weight: bold; }
+              .input-data { background-color: #ffffff; border: 2px solid #1c1e65; padding: 20px; margin: 20px 0; border-radius: 8px; }
+              .input-data h3 { color: #1c1e65; margin-bottom: 15px; }
+              .input-data ul { list-style: none; padding: 0; }
+              .input-data li { padding: 8px 0; border-bottom: 1px solid #e5e7eb; }
+              .input-data li:last-child { border-bottom: none; }
             </style>
           </head>
           <body>
@@ -174,11 +181,13 @@ Deno.serve(async (req: Request) => {
                     </tbody>
                   </table>
 
-                  <h3>🏠 Deine Eingabedaten</h3>
-                  <ul>
-                    <li><strong>Ursprünglicher Kaufpreis:</strong> ${formatEUR(calculation_details.kaufpreisAlt)}</li>
-                    <li><strong>Aktueller Marktwert:</strong> ${formatEUR(calculation_details.marktwert)}</li>
-                  </ul>
+                  <div class="input-data">
+                    <h3>🏠 Deine Eingabedaten</h3>
+                    <ul>
+                      <li><strong>Ursprünglicher Kaufpreis:</strong> ${formatEUR(calculation_details.kaufpreisAlt)}</li>
+                      <li><strong>Aktueller Marktwert:</strong> ${formatEUR(calculation_details.marktwert)}</li>
+                    </ul>
+                  </div>
 
                   <div class="chart-data">
                     <h4>📊 10-Jahres-Vorschau: Kumulierte Steuerersparnis</h4>
