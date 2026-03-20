@@ -410,7 +410,7 @@ function App() {
                     />
                     <button
                       type="submit"
-                      className="px-8 py-3 bg-white text-[#1c1e65] font-bold text-base hover:bg-gray-100 transition-colors whitespace-nowrap"
+                      className="px-8 py-3 bg-[#94fab7] text-[#1c1e65] font-bold text-base hover:bg-[#7ee8a3] transition-colors whitespace-nowrap"
                     >
                       Jetzt Analyse anfordern
                     </button>
@@ -433,7 +433,7 @@ function App() {
                     href="https://www.capri-consult.de/kontakt/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-block px-6 py-3 bg-[#1c1e65] text-white font-bold hover:bg-[#14153f] transition-colors"
+                    className="inline-block px-6 py-3 bg-[#94fab7] text-[#1c1e65] font-bold hover:bg-[#7ee8a3] transition-colors"
                   >
                     Direkt Termin vereinbaren
                   </a>
@@ -496,7 +496,7 @@ function App() {
                   href="https://www.capri-consult.de/kontakt/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block px-8 py-4 bg-white text-[#1c1e65] font-bold text-lg hover:bg-gray-100 transition-colors"
+                  className="inline-block px-8 py-4 bg-[#94fab7] text-[#1c1e65] font-bold text-lg hover:bg-[#7ee8a3] transition-colors"
                 >
                   Jetzt kostenlose Erstberatung vereinbaren
                 </a>
