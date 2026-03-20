@@ -383,10 +383,10 @@ function App() {
               {showEmailForm && !emailSubmitted && (
                 <div className="bg-gradient-to-br from-[#1c1e65] to-[#2a2d8f] text-white p-8 mb-8 shadow-lg">
                   <h3 className="text-2xl font-bold mb-4">
-                    Kostenlose Beratung zur Umsetzung sichern
+                    Alle Ergebnisse per E-Mail erhalten
                   </h3>
                   <p className="mb-6 text-lg opacity-95">
-                    Erhalten Sie eine detaillierte Analyse und erfahren Sie, wie Sie diese Steuerersparnis konkret umsetzen können.
+                    Erhalte eine detaillierte Analyse und erfahre in einem kostenfreien Beratungsgespräch, wie du diese und weitere Steuertricks umsetzen kannst.
                   </p>
 
                   <div className="flex items-center gap-2 mb-6 text-sm">
@@ -404,7 +404,7 @@ function App() {
                       type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      placeholder="Ihre E-Mail-Adresse"
+                      placeholder="Deine E-Mail-Adresse"
                       className="flex-1 px-5 py-3 text-gray-900 text-base focus:outline-none focus:ring-2 focus:ring-white"
                       required
                     />
@@ -427,7 +427,7 @@ function App() {
                     Vielen Dank!
                   </h3>
                   <p className="text-green-700 mb-4">
-                    Wir haben Ihnen eine E-Mail mit Ihrer Berechnung gesendet. Möchten Sie unverbindlich von einem CAPRI CONSULT Experten beraten werden?
+                    Wir haben dir eine E-Mail mit deiner Berechnung gesendet. Möchtest du unverbindlich von einem CAPRI CONSULT Experten beraten werden?
                   </p>
                   <a
                     href="https://www.capri-consult.de/kontakt/"
@@ -487,10 +487,10 @@ function App() {
 
               <div className="bg-[#1c1e65] text-white p-8 mt-8 text-center">
                 <h3 className="text-2xl font-bold mb-3">
-                  Möchten Sie diese Steuerersparnis nutzen?
+                  Möchtest du diese Steuerersparnis nutzen?
                 </h3>
                 <p className="text-lg mb-6 opacity-95">
-                  Unsere Experten von CAPRI CONSULT unterstützen Sie bei der rechtssicheren Umsetzung.
+                  Unsere Experten von CAPRI CONSULT unterstützen dich bei der rechtssicheren Umsetzung.
                 </p>
                 <a
                   href="https://www.capri-consult.de/kontakt/"
