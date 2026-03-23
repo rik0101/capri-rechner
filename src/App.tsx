@@ -594,21 +594,31 @@ function TooltipMobile({ text }: { text: string }) {
   return (
     <div
       ref={containerRef}
-      className="relative ml-2"
+      className="relative ml-2 inline-block"
       onMouseEnter={() => setIsOpen(true)}
       onMouseLeave={() => setIsOpen(false)}
     >
       <Info
         size={18}
         className="text-[#1c1e65] cursor-help"
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          setIsOpen(!isOpen);
+        }}
       />
       {isOpen && (
         <div
           ref={tooltipRef}
-          className="absolute bottom-full mb-2 w-64 max-w-[calc(100vw-2rem)] bg-[#1c1e65] text-white p-3 text-sm leading-relaxed shadow-[0_0_0_0.25rem_rgba(28,30,101,0.25)] z-10 right-0"
+          className="fixed md:absolute bottom-auto md:bottom-full left-1/2 md:left-auto -translate-x-1/2 md:translate-x-0 md:right-0 mb-2 w-64 max-w-[calc(100vw-2rem)] bg-[#1c1e65] text-white p-3 text-sm leading-relaxed shadow-lg z-[9999]"
+          style={{
+            top: containerRef.current
+              ? `${containerRef.current.getBoundingClientRect().top - 10}px`
+              : 'auto'
+          }}
         >
           {text}
+          <div className="absolute left-1/2 md:left-auto md:right-4 -translate-x-1/2 md:translate-x-0 -bottom-2 w-0 h-0 border-l-8 border-l-transparent border-r-8 border-r-transparent border-t-8 border-t-[#1c1e65]"></div>
         </div>
       )}
     </div>
