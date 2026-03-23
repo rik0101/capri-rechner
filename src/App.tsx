@@ -307,7 +307,7 @@ function App() {
                 <div className="mb-6">
                   <label className="flex items-center mb-2 text-base text-gray-700">
                     Gebäudeanteil
-                    <Tooltip text="Auch wenn bereits eine Kaufpreisaufteilung gemäß Arbeitshilfe des BMF vorgenommen wurde, können Sie die Bemessungsgrundlage der Abschreibung mit einem Gutachten nachträglich anpassen lassen." />
+                    <Tooltip text="Kaufpreisaufteilung gemäß Arbeitshilfe des BMF oder Gutachten." />
                   </label>
                   <div className="relative">
                     <input
