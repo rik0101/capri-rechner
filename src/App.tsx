@@ -540,9 +540,9 @@ function Tooltip({ text }: { text: string }) {
       if (containerRef.current) {
         const rect = containerRef.current.getBoundingClientRect();
         const tooltipWidth = 256;
-        const rightEdge = rect.left + rect.width / 2 + tooltipWidth / 2;
+        const leftEdge = rect.left + rect.width / 2 - tooltipWidth / 2;
 
-        if (rightEdge > window.innerWidth - 16) {
+        if (leftEdge < 16) {
           setPosition('right');
         } else {
           setPosition('center');
@@ -561,7 +561,7 @@ function Tooltip({ text }: { text: string }) {
       <div
         ref={tooltipRef}
         className={`absolute bottom-full mb-2 hidden group-hover:block w-64 max-w-[calc(100vw-2rem)] bg-[#1c1e65] text-white p-3 text-sm leading-relaxed shadow-[0_0_0_0.25rem_rgba(28,30,101,0.25)] z-10 ${
-          position === 'right' ? 'right-0' : 'left-1/2 -translate-x-1/2'
+          position === 'right' ? 'left-0' : 'left-1/2 -translate-x-1/2'
         }`}
       >
         {text}
