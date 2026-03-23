@@ -310,7 +310,7 @@ function App() {
                 <div className="mb-6">
                   <label className="flex items-center mb-2 text-base text-gray-700">
                     Gebäudeanteil
-                    <TooltipMobile text="Kaufpreisaufteilung gemäß Arbeitshilfe des BMF oder Gutachten." />
+                    <TooltipMobile text="Kaufpreisaufteilung gemäß Arbeitshilfe des BMF oder Gutachten." alignRight={true} />
                   </label>
                   <div className="relative">
                     <input
@@ -573,7 +573,7 @@ function Tooltip({ text }: { text: string }) {
   );
 }
 
-function TooltipMobile({ text }: { text: string }) {
+function TooltipMobile({ text, alignRight = false }: { text: string; alignRight?: boolean }) {
   const [isOpen, setIsOpen] = useState(false);
   const tooltipRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -613,10 +613,14 @@ function TooltipMobile({ text }: { text: string }) {
       {isOpen && (
         <div
           ref={tooltipRef}
-          className="absolute bottom-full right-0 mb-2 w-64 max-w-[calc(100vw-2rem)] bg-[#1c1e65] text-white p-3 text-sm leading-relaxed shadow-lg z-50"
+          className={`absolute bottom-full mb-2 w-64 max-w-[calc(100vw-2rem)] bg-[#1c1e65] text-white p-3 text-sm leading-relaxed shadow-lg z-50 ${
+            alignRight ? 'right-0 md:left-0' : 'right-0'
+          }`}
         >
           {text}
-          <div className="absolute right-4 -bottom-2 w-0 h-0 border-l-8 border-l-transparent border-r-8 border-r-transparent border-t-8 border-t-[#1c1e65]"></div>
+          <div className={`absolute -bottom-2 w-0 h-0 border-l-8 border-l-transparent border-r-8 border-r-transparent border-t-8 border-t-[#1c1e65] ${
+            alignRight ? 'right-4 md:left-4' : 'right-4'
+          }`}></div>
         </div>
       )}
     </div>
