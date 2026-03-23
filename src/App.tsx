@@ -571,18 +571,46 @@ function Tooltip({ text }: { text: string }) {
 }
 
 function TooltipMobile({ text }: { text: string }) {
+  const [isOpen, setIsOpen] = useState(false);
   const tooltipRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen]);
+
   return (
-    <div ref={containerRef} className="relative group ml-2">
-      <Info size={18} className="text-[#1c1e65] cursor-help" />
-      <div
-        ref={tooltipRef}
-        className="absolute bottom-full mb-2 hidden group-hover:block w-64 max-w-[calc(100vw-2rem)] bg-[#1c1e65] text-white p-3 text-sm leading-relaxed shadow-[0_0_0_0.25rem_rgba(28,30,101,0.25)] z-10 right-0"
-      >
-        {text}
-      </div>
+    <div
+      ref={containerRef}
+      className="relative ml-2"
+      onMouseEnter={() => setIsOpen(true)}
+      onMouseLeave={() => setIsOpen(false)}
+    >
+      <Info
+        size={18}
+        className="text-[#1c1e65] cursor-help"
+        onClick={() => setIsOpen(!isOpen)}
+      />
+      {isOpen && (
+        <div
+          ref={tooltipRef}
+          className="absolute bottom-full mb-2 w-64 max-w-[calc(100vw-2rem)] bg-[#1c1e65] text-white p-3 text-sm leading-relaxed shadow-[0_0_0_0.25rem_rgba(28,30,101,0.25)] z-10 right-0"
+        >
+          {text}
+        </div>
+      )}
     </div>
   );
 }
