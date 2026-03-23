@@ -129,6 +129,7 @@ function App() {
       canvas.style.height = rect.height + 'px';
 
       const padding = 40;
+      const labelOffset = 30;
       const chartWidth = rect.width - 2 * padding;
       const chartHeight = rect.height - 2 * padding;
       const maxValue = Math.max(...result.cumulativeSavings);
@@ -189,7 +190,7 @@ function App() {
       ctx.fillStyle = '#343a40';
       ctx.font = '12px effra, sans-serif';
       ctx.textAlign = 'left';
-      ctx.fillText('Jahr', padding, rect.height - padding + 20);
+      ctx.fillText('Jahr', padding - labelOffset, rect.height - padding + 20);
 
       ctx.textAlign = 'center';
       result.cumulativeSavings.forEach((_, i) => {
@@ -530,10 +531,39 @@ function App() {
 }
 
 function Tooltip({ text }: { text: string }) {
+  const [position, setPosition] = useState<'center' | 'right'>('center');
+  const tooltipRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const checkPosition = () => {
+      if (containerRef.current) {
+        const rect = containerRef.current.getBoundingClientRect();
+        const tooltipWidth = 256;
+        const rightEdge = rect.left + rect.width / 2 + tooltipWidth / 2;
+
+        if (rightEdge > window.innerWidth - 16) {
+          setPosition('right');
+        } else {
+          setPosition('center');
+        }
+      }
+    };
+
+    checkPosition();
+    window.addEventListener('resize', checkPosition);
+    return () => window.removeEventListener('resize', checkPosition);
+  }, []);
+
   return (
-    <div className="relative group ml-2">
+    <div ref={containerRef} className="relative group ml-2">
       <Info size={18} className="text-[#1c1e65] cursor-help" />
-      <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover:block w-64 max-w-[calc(100vw-2rem)] bg-[#1c1e65] text-white p-3 text-sm leading-relaxed shadow-[0_0_0_0.25rem_rgba(28,30,101,0.25)] z-10">
+      <div
+        ref={tooltipRef}
+        className={`absolute bottom-full mb-2 hidden group-hover:block w-64 max-w-[calc(100vw-2rem)] bg-[#1c1e65] text-white p-3 text-sm leading-relaxed shadow-[0_0_0_0.25rem_rgba(28,30,101,0.25)] z-10 ${
+          position === 'right' ? 'right-0' : 'left-1/2 -translate-x-1/2'
+        }`}
+      >
         {text}
       </div>
     </div>
