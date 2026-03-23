@@ -300,8 +300,11 @@ function App() {
             </button>
 
             <div
-              className="transition-all overflow-hidden"
-              style={{ maxHeight: showExpert ? '600px' : '0' }}
+              className="transition-all"
+              style={{
+                maxHeight: showExpert ? '600px' : '0',
+                overflow: showExpert ? 'visible' : 'hidden'
+              }}
             >
               <div className="mb-8">
                 <div className="mb-6">
@@ -610,15 +613,10 @@ function TooltipMobile({ text }: { text: string }) {
       {isOpen && (
         <div
           ref={tooltipRef}
-          className="fixed md:absolute bottom-auto md:bottom-full left-1/2 md:left-auto -translate-x-1/2 md:translate-x-0 md:right-0 mb-2 w-64 max-w-[calc(100vw-2rem)] bg-[#1c1e65] text-white p-3 text-sm leading-relaxed shadow-lg z-[9999]"
-          style={{
-            top: containerRef.current
-              ? `${containerRef.current.getBoundingClientRect().top - 10}px`
-              : 'auto'
-          }}
+          className="absolute bottom-full right-0 mb-2 w-64 max-w-[calc(100vw-2rem)] bg-[#1c1e65] text-white p-3 text-sm leading-relaxed shadow-lg z-50"
         >
           {text}
-          <div className="absolute left-1/2 md:left-auto md:right-4 -translate-x-1/2 md:translate-x-0 -bottom-2 w-0 h-0 border-l-8 border-l-transparent border-r-8 border-r-transparent border-t-8 border-t-[#1c1e65]"></div>
+          <div className="absolute right-4 -bottom-2 w-0 h-0 border-l-8 border-l-transparent border-r-8 border-r-transparent border-t-8 border-t-[#1c1e65]"></div>
         </div>
       )}
     </div>
