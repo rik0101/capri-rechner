@@ -28,6 +28,7 @@ function App() {
   const [emailSubmitted, setEmailSubmitted] = useState(false);
   const [emailError, setEmailError] = useState('');
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const emailBoxRef = useRef<HTMLDivElement>(null);
 
   const formatEUR = (value: number) => {
     return new Intl.NumberFormat('de-DE', {
@@ -67,6 +68,10 @@ function App() {
       cumulativeSavings
     });
     setShowEmailForm(true);
+
+    setTimeout(() => {
+      emailBoxRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
   };
 
   const handleEmailSubmit = async (e: React.FormEvent) => {
@@ -396,7 +401,7 @@ function App() {
           {result && (
             <div className="mt-12 pt-12 border-t-2 border-gray-200">
               {showEmailForm && !emailSubmitted && (
-                <div className="bg-gradient-to-br from-[#1c1e65] to-[#2a2d8f] text-white p-8 mb-8 shadow-lg">
+                <div ref={emailBoxRef} className="bg-gradient-to-br from-[#1c1e65] to-[#2a2d8f] text-white p-8 mb-8 shadow-lg">
                   <h3 className="text-2xl font-bold mb-4">
                     Alle Ergebnisse per E-Mail erhalten
                   </h3>
@@ -457,8 +462,7 @@ function App() {
 
               <div className="text-center py-10 px-8 bg-[#94fab7] text-[#1c1e65] mb-8">
                 <p className="text-xl mb-3">Deine jährliche Steuerersparnis</p>
-                <h3 className="text-5xl font-bold mb-1">{formatEUR(result.yearlySavings)}</h3>
-                <small className="text-base">pro Jahr</small>
+                <h3 className="text-5xl font-bold">{formatEUR(result.yearlySavings)}</h3>
               </div>
 
               <div className="bg-gray-100 border border-gray-500 mb-8">
@@ -468,22 +472,22 @@ function App() {
                   <div className="text-center">Nachher</div>
                 </div>
                 <div className="grid grid-cols-3 p-4 border-b border-gray-200">
-                  <div className="text-gray-700">AfA (Abschreibung)</div>
+                  <div className="text-gray-700 text-sm md:text-base">AfA (Abschreibung)</div>
                   <div className="text-center font-bold text-red-600">{formatEUR(result.afaAlt)}</div>
                   <div className="text-center font-bold text-green-600">{formatEUR(result.afaNeu)}</div>
                 </div>
                 <div className="grid grid-cols-3 p-4 border-b border-gray-200">
-                  <div className="text-gray-700">Zinsaufwendungen</div>
+                  <div className="text-gray-700 text-sm md:text-base">Zinsaufwendungen</div>
                   <div className="text-center font-bold text-red-600">0 €</div>
                   <div className="text-center font-bold text-green-600">{formatEUR(result.zinskosten)}</div>
                 </div>
                 <div className="grid grid-cols-3 p-4 border-b border-gray-200">
-                  <div className="text-gray-700">Gesamt absetzbar</div>
+                  <div className="text-gray-700 text-sm md:text-base">Gesamt absetzbar</div>
                   <div className="text-center font-bold text-red-600">{formatEUR(result.gesamtAbsetzbarAlt)}</div>
                   <div className="text-center font-bold text-green-600">{formatEUR(result.gesamtAbsetzbarNeu)}</div>
                 </div>
                 <div className="grid grid-cols-3 p-4">
-                  <div className="text-gray-700">Steuerersparnis (jährlich)</div>
+                  <div className="text-gray-700 text-sm md:text-base">Steuerersparnis (jährlich)</div>
                   <div className="text-center font-bold text-red-600">{formatEUR(result.steuerAlt)}</div>
                   <div className="text-center font-bold text-green-600">{formatEUR(result.steuerNeu)}</div>
                 </div>
@@ -614,12 +618,12 @@ function TooltipMobile({ text, alignRight = false }: { text: string; alignRight?
         <div
           ref={tooltipRef}
           className={`absolute bottom-full mb-2 w-64 max-w-[calc(100vw-2rem)] bg-[#1c1e65] text-white p-3 text-sm leading-relaxed shadow-lg z-50 ${
-            alignRight ? 'right-0 md:left-0' : 'right-0'
+            alignRight ? 'left-0' : 'right-0'
           }`}
         >
           {text}
           <div className={`absolute -bottom-2 w-0 h-0 border-l-8 border-l-transparent border-r-8 border-r-transparent border-t-8 border-t-[#1c1e65] ${
-            alignRight ? 'right-4 md:left-4' : 'right-4'
+            alignRight ? 'left-4' : 'right-4'
           }`}></div>
         </div>
       )}

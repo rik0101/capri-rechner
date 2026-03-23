@@ -146,7 +146,6 @@ Deno.serve(async (req: Request) => {
                   <div class="highlight-box">
                     <p style="font-size: 18px; margin: 0;">Deine jährliche Steuerersparnis</p>
                     <h3>${formatEUR(calculation_details.yearlySavings)}</h3>
-                    <small>pro Jahr</small>
                   </div>
 
                   <h3>📋 Detaillierte Vergleichstabelle</h3>
