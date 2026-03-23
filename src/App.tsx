@@ -494,7 +494,7 @@ function App() {
               </div>
 
               <div className="bg-gray-100 border border-gray-500 p-8 mt-8">
-                <h3 className="text-3xl text-[#1c1e65] font-bold mb-6">
+                <h3 className="text-xl md:text-3xl text-[#1c1e65] font-bold mb-6">
                   📊 10-Jahres-Vorschau: Kumulierte Steuerersparnis
                 </h3>
                 <canvas ref={canvasRef} className="w-full h-64 mb-6" />
