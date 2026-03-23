@@ -307,7 +307,7 @@ function App() {
                 <div className="mb-6">
                   <label className="flex items-center mb-2 text-base text-gray-700">
                     Gebäudeanteil
-                    <Tooltip text="Kaufpreisaufteilung gemäß Arbeitshilfe des BMF oder Gutachten." />
+                    <TooltipMobile text="Kaufpreisaufteilung gemäß Arbeitshilfe des BMF oder Gutachten." />
                   </label>
                   <div className="relative">
                     <input
@@ -326,7 +326,7 @@ function App() {
                 <div className="mb-6">
                   <label className="flex items-center mb-2 text-base text-gray-700">
                     Restnutzungsdauer (neue AfA-Basis)
-                    <Tooltip text="Die verbleibende Nutzungsdauer nach Verkauf (oft durch Gutachten ermittelt). Standard: 50 Jahre = 2% AfA." />
+                    <TooltipMobile text="Die verbleibende Nutzungsdauer nach Verkauf (oft durch Gutachten ermittelt). Standard: 50 Jahre = 2% AfA." />
                   </label>
                   <div className="relative">
                     <input
@@ -345,7 +345,7 @@ function App() {
                 <div className="mb-6">
                   <label className="flex items-center mb-2 text-base text-gray-700">
                     Zinssatz für Ehegatten-Darlehen
-                    <Tooltip text="Zinssatz für das Darlehen zwischen Ehepartnern. Zinsaufwendungen sind steuerlich absetzbar." />
+                    <TooltipMobile text="Zinssatz für das Darlehen zwischen Ehepartnern. Zinsaufwendungen sind steuerlich absetzbar." />
                   </label>
                   <div className="relative">
                     <input
@@ -563,6 +563,23 @@ function Tooltip({ text }: { text: string }) {
         className={`absolute bottom-full mb-2 hidden group-hover:block w-64 max-w-[calc(100vw-2rem)] bg-[#1c1e65] text-white p-3 text-sm leading-relaxed shadow-[0_0_0_0.25rem_rgba(28,30,101,0.25)] z-10 ${
           position === 'right' ? 'left-0' : 'left-1/2 -translate-x-1/2'
         }`}
+      >
+        {text}
+      </div>
+    </div>
+  );
+}
+
+function TooltipMobile({ text }: { text: string }) {
+  const tooltipRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  return (
+    <div ref={containerRef} className="relative group ml-2">
+      <Info size={18} className="text-[#1c1e65] cursor-help" />
+      <div
+        ref={tooltipRef}
+        className="absolute bottom-full mb-2 hidden group-hover:block w-64 max-w-[calc(100vw-2rem)] bg-[#1c1e65] text-white p-3 text-sm leading-relaxed shadow-[0_0_0_0.25rem_rgba(28,30,101,0.25)] z-10 right-0"
       >
         {text}
       </div>
