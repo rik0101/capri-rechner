@@ -269,7 +269,7 @@ function App() {
               <div className="mb-6">
                 <label className="flex items-center mb-2 text-base text-gray-700">
                   Spekulationsfrist abgelaufen? (10 Jahre)
-                  <Tooltip text="Nach 10 Jahren Haltedauer ist der Verkauf steuerfrei. Vorher würde der Gewinn versteuert werden." />
+                  <TooltipMobile text="Nach 10 Jahren Haltedauer ist der Verkauf steuerfrei. Vorher würde der Gewinn versteuert werden." />
                 </label>
                 <div className="flex items-center gap-4">
                   <button
