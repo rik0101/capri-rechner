@@ -188,10 +188,13 @@ function App() {
 
       ctx.fillStyle = '#343a40';
       ctx.font = '12px effra, sans-serif';
+      ctx.textAlign = 'left';
+      ctx.fillText('Jahr', padding, rect.height - padding + 20);
+
       ctx.textAlign = 'center';
       result.cumulativeSavings.forEach((_, i) => {
         const x = padding + stepX * i;
-        ctx.fillText(`Jahr ${i + 1}`, x, rect.height - padding + 20);
+        ctx.fillText(`${i + 1}`, x, rect.height - padding + 20);
       });
     }
   }, [result]);
@@ -303,7 +306,7 @@ function App() {
                 <div className="mb-6">
                   <label className="flex items-center mb-2 text-base text-gray-700">
                     Gebäudeanteil
-                    <Tooltip text="Anteil des Gebäudewerts am Gesamtwert (Rest ist Bodenwert). Nur Gebäude sind abschreibbar." />
+                    <Tooltip text="Auch wenn bereits eine Kaufpreisaufteilung gemäß Arbeitshilfe des BMF vorgenommen wurde, können Sie die Bemessungsgrundlage der Abschreibung mit einem Gutachten nachträglich anpassen lassen." />
                   </label>
                   <div className="relative">
                     <input
@@ -397,14 +400,14 @@ function App() {
                     Erhalte eine detaillierte Analyse und erfahre in einem kostenfreien Beratungsgespräch, wie du diese und weitere Steuertricks umsetzen kannst.
                   </p>
 
-                  <div className="flex items-center gap-2 mb-6 text-sm">
+                  <div className="flex items-center gap-2 mb-6 text-xs sm:text-sm">
                     <div className="flex">
                       {[...Array(5)].map((_, i) => (
-                        <Star key={i} size={18} fill="#fbbf24" stroke="#fbbf24" />
+                        <Star key={i} size={14} fill="#fbbf24" stroke="#fbbf24" className="sm:w-[18px] sm:h-[18px]" />
                       ))}
                     </div>
-                    <span className="font-semibold">4,95 von 5</span>
-                    <span className="opacity-75">(359 Bewertungen)</span>
+                    <span className="font-semibold whitespace-nowrap">4,95 von 5</span>
+                    <span className="opacity-75 whitespace-nowrap">(359 Bewertungen)</span>
                   </div>
 
                   <form onSubmit={handleEmailSubmit} className="flex flex-col sm:flex-row gap-3">
@@ -508,14 +511,14 @@ function App() {
                 >
                   Jetzt kostenlose Erstberatung vereinbaren
                 </a>
-                <div className="flex items-center justify-center gap-2 mt-6 text-sm">
+                <div className="flex items-center justify-center gap-2 mt-6 text-xs sm:text-sm">
                   <div className="flex">
                     {[...Array(5)].map((_, i) => (
-                      <Star key={i} size={16} fill="#fbbf24" stroke="#fbbf24" />
+                      <Star key={i} size={14} fill="#fbbf24" stroke="#fbbf24" className="sm:w-4 sm:h-4" />
                     ))}
                   </div>
-                  <span className="font-semibold">4,95 von 5</span>
-                  <span className="opacity-75">(359 Bewertungen)</span>
+                  <span className="font-semibold whitespace-nowrap">4,95 von 5</span>
+                  <span className="opacity-75 whitespace-nowrap">(359 Bewertungen)</span>
                 </div>
               </div>
             </div>
@@ -530,7 +533,7 @@ function Tooltip({ text }: { text: string }) {
   return (
     <div className="relative group ml-2">
       <Info size={18} className="text-[#1c1e65] cursor-help" />
-      <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover:block w-64 bg-[#1c1e65] text-white p-3 text-sm leading-relaxed shadow-[0_0_0_0.25rem_rgba(28,30,101,0.25)] z-10">
+      <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover:block w-64 max-w-[calc(100vw-2rem)] bg-[#1c1e65] text-white p-3 text-sm leading-relaxed shadow-[0_0_0_0.25rem_rgba(28,30,101,0.25)] z-10">
         {text}
       </div>
     </div>
