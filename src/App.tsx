@@ -504,12 +504,16 @@ function App() {
                 </div>
               </div>
 
+              <div className="bg-gray-50 border border-gray-300 p-4 mt-8 text-center text-sm text-gray-600 italic">
+                Das Ergebnis dient zur Orientierung und ist im Detail mit dem pers. Steuerberater abzustimmen.
+              </div>
+
               <div className="bg-[#1c1e65] text-white p-8 mt-8 text-center">
                 <h3 className="text-2xl font-bold mb-3">
                   Möchtest du diese Steuerersparnis nutzen?
                 </h3>
                 <p className="text-lg mb-6 opacity-95">
-                  Unsere Experten von CAPRI CONSULT unterstützen dich bei der rechtssicheren Umsetzung.
+                  CAPRI unterstützt dich bei der strategischen Beratung, Umsetzung und laufenden Betreuung.
                 </p>
                 <a
                   href="https://www.capri-consult.de/kontakt/"
