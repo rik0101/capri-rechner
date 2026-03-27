@@ -570,7 +570,7 @@ function FAQSection() {
     },
     {
       question: "Für wen eignet sich die Ehegattenschaukel?",
-      answer: "Die Strategie eignet sich besonders für verheiratete Paare, bei denen beide Partner Gesellschafter einer GmbH sind und ein gemeinsames Einkommen von mehr als 120.000 Euro pro Jahr erzielen. Je höher das Einkommen, desto größer ist in der Regel das Einsparpotenzial."
+      answer: "Die Strategie eignet sich besonders für Ehepaare mit vermieteten Immobilien, die bereits die zehnjährige Spekulationsfrist erfüllt haben. Durch den Verkauf zum aktuellen Marktwert an den Partner kann das Abschreibungsvolumen (AfA) rechtssicher erhöht und somit die Steuerlast gesenkt werden. Besonders attraktiv ist dies für Gutverdienende, da die Transaktion zwischen Eheleuten von der Grunderwerbsteuer befreit ist und lediglich geringe Notarkosten verursacht."
     },
     {
       question: "Ist die Ehegattenschaukel legal?",
