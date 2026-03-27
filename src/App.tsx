@@ -578,7 +578,7 @@ function FAQSection() {
     },
     {
       question: "Welche Kosten entstehen bei der Umsetzung?",
-      answer: "Ein großer Vorteil der Ehegattenschaukel: Die Transaktion zwischen Eheleuten ist von der Grunderwerbsteuer befreit. Es fallen lediglich geringe Notarkosten an. Die Steuerersparnis durch die erhöhte Abschreibung übersteigt diese Kosten in der Regel bereits im ersten Jahr deutlich."
+      answer: "Ein großer Vorteil der Ehegattenschaukel: Die Transaktion zwischen Eheleuten ist von der Grunderwerbsteuer befreit. Es fallen lediglich Notarkosten an. Die Steuerersparnis durch die erhöhte Abschreibung übersteigt diese Kosten in der Regel bereits im ersten Jahr deutlich."
     },
     {
       question: "Wie unterstützt CAPRI bei der Umsetzung?",
