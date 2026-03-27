@@ -570,11 +570,11 @@ function FAQSection() {
     },
     {
       question: "Für wen eignet sich die Ehegattenschaukel?",
-      answer: "Die Ehegattenschaukel kann von jedem Ehepaar genutzt werden, das eine Immobilie im Privatvermögen besitzt. Voraussetzung ist einzig die Ehe (oder eingetragene Lebenspartnerschaft), um von der Befreiung der Grunderwerbsteuer zu profitieren. Die Strategie funktioniert am besten mit vermieteten Bestandsimmobilien im Privatbesitz. Für GmbH-Gesellschafter kann das Modell zusätzlich interessant sein, um Liquidität aus der privaten Ebene zu steuern – dies ist aber absolut keine Bedingung für die Umsetzung. Die Strategie ist ein rein immobiliensteuerliches Werkzeug, das CAPRI CONSULT unabhängig von einer Unternehmensform betrachtet."
+      answer: "Die Ehegattenschaukel kann von jedem Ehepaar genutzt werden, das eine Immobilie im Privatvermögen besitzt. Voraussetzung ist einzig die Ehe (oder eingetragene Lebenspartnerschaft), um von der Befreiung der Grunderwerbsteuer zu profitieren. Die Strategie funktioniert am besten mit vermieteten Bestandsimmobilien im Privatbesitz. Für GmbH-Gesellschafter kann das Modell zusätzlich interessant sein, um Liquidität aus der privaten Ebene zu steuern – dies ist aber absolut keine Bedingung für die Umsetzung."
     },
     {
       question: "Ist die Ehegattenschaukel legal?",
-      answer: "Ja, die Ehegattenschaukel ist bei korrekter Umsetzung vollkommen legal. Wichtig ist, dass der Verkauf zum Marktwert erfolgt und alle steuerrechtlichen Anforderungen erfüllt werden. Eine professionelle Beratung durch Steuerexperten wie CAPRI stellt sicher, dass die Strategie rechtssicher umgesetzt wird."
+      answer: "Ja, die Ehegattenschaukel ist bei korrekter Umsetzung vollkommen legal. Wichtig ist, dass der Verkauf zum Marktwert erfolgt und alle steuerrechtlichen Anforderungen erfüllt werden. Eine professionelle Beratung durch Finanzexperten wie CAPRI stellt sicher, dass die Strategie rechtssicher umgesetzt wird."
     },
     {
       question: "Welche Kosten entstehen bei der Umsetzung?",
