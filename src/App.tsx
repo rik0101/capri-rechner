@@ -562,7 +562,7 @@ function FAQSection() {
   const faqs = [
     {
       question: "Was ist die Ehegattenschaukel?",
-      answer: "Die Ehegattenschaukel ist eine legale Steueroptimierungsstrategie für verheiratete GmbH-Gesellschafter. Durch die gezielte Verteilung von Gehältern und Gewinnausschüttungen zwischen beiden Ehepartnern können erhebliche Steuerersparnisse erzielt werden. Ein Ehepartner erhält primär ein Gehalt (was sozialversicherungs- und steuerpflichtig ist), während der andere Partner hauptsächlich Dividenden aus der GmbH bezieht (die niedriger besteuert werden)."
+      answer: "Die Ehegattenschaukel ist eine legale Steueroptimierungsstrategie für Immobilienbesitzer. Bei dieser Strategie verkauft ein Ehepartner eine vermietete Immobilie nach Ablauf der Spekulationsfrist an den anderen Partner zum aktuellen Marktwert. Dadurch kann die Abschreibungsbasis (AfA) rechtssicher erhöht und somit die Steuerlast nachhaltig gesenkt werden."
     },
     {
       question: "Wie genau ist dieser Rechner?",
@@ -570,15 +570,15 @@ function FAQSection() {
     },
     {
       question: "Für wen eignet sich die Ehegattenschaukel?",
-      answer: "Die Strategie eignet sich besonders für Ehepaare mit vermieteten Immobilien, die bereits die zehnjährige Spekulationsfrist erfüllt haben. Durch den Verkauf zum aktuellen Marktwert an den Partner kann das Abschreibungsvolumen (AfA) rechtssicher erhöht und somit die Steuerlast gesenkt werden. Besonders attraktiv ist dies für Gutverdienende, da die Transaktion zwischen Eheleuten von der Grunderwerbsteuer befreit ist und lediglich geringe Notarkosten verursacht."
+      answer: "Die Ehegattenschaukel kann von jedem Ehepaar genutzt werden, das eine Immobilie im Privatvermögen besitzt. Voraussetzung ist einzig die Ehe (oder eingetragene Lebenspartnerschaft), um von der Befreiung der Grunderwerbsteuer zu profitieren. Die Strategie funktioniert am besten mit vermieteten Bestandsimmobilien im Privatbesitz. Für GmbH-Gesellschafter kann das Modell zusätzlich interessant sein, um Liquidität aus der privaten Ebene zu steuern – dies ist aber absolut keine Bedingung für die Umsetzung. Die Strategie ist ein rein immobiliensteuerliches Werkzeug, das CAPRI CONSULT unabhängig von einer Unternehmensform betrachtet."
     },
     {
       question: "Ist die Ehegattenschaukel legal?",
-      answer: "Ja, die Ehegattenschaukel ist bei korrekter Umsetzung vollkommen legal. Wichtig ist, dass die Gehaltsverteilung angemessen ist und beide Partner tatsächlich in der GmbH tätig sind. Eine professionelle Beratung durch Steuerexperten wie CAPRI stellt sicher, dass alle rechtlichen Anforderungen erfüllt werden."
+      answer: "Ja, die Ehegattenschaukel ist bei korrekter Umsetzung vollkommen legal. Wichtig ist, dass der Verkauf zum Marktwert erfolgt und alle steuerrechtlichen Anforderungen erfüllt werden. Eine professionelle Beratung durch Steuerexperten wie CAPRI stellt sicher, dass die Strategie rechtssicher umgesetzt wird."
     },
     {
-      question: "Welche Rolle spielen Sozialversicherungsbeiträge?",
-      answer: "Gehälter sind sozialversicherungspflichtig, Dividenden hingegen nicht. Dies ist ein wichtiger Aspekt der Ehegattenschaukel: Der Partner mit niedrigerem Gehalt zahlt weniger Sozialversicherungsbeiträge, was zusätzlich zu den Steuereinsparungen zur Gesamtersparnis beiträgt."
+      question: "Welche Kosten entstehen bei der Umsetzung?",
+      answer: "Ein großer Vorteil der Ehegattenschaukel: Die Transaktion zwischen Eheleuten ist von der Grunderwerbsteuer befreit. Es fallen lediglich geringe Notarkosten an. Die Steuerersparnis durch die erhöhte Abschreibung übersteigt diese Kosten in der Regel bereits im ersten Jahr deutlich."
     },
     {
       question: "Wie unterstützt CAPRI bei der Umsetzung?",
