@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { Calculator, Info, Star } from 'lucide-react';
+import { Calculator, Info, Star, ChevronDown } from 'lucide-react';
 
 interface CalculationResult {
   afaAlt: number;
@@ -208,18 +208,26 @@ function App() {
   return (
     <div className="min-h-screen bg-white">
       <div className="max-w-4xl mx-auto">
-        <div className="bg-[#1c1e65] text-white py-12 px-8 text-center">
-          <div className="text-sm mb-4 opacity-75">Ein Service von CAPRI CONSULT</div>
+        <header className="bg-[#1c1e65] text-white py-12 px-8 text-center">
+          <div className="text-sm mb-4 opacity-75">Ein Service von CAPRI</div>
           <h1 className="text-4xl font-bold mb-3 flex items-center justify-center gap-3">
-            <Calculator size={40} />
+            <Calculator size={40} aria-hidden="true" />
             Ehegattenschaukel-Rechner
           </h1>
           <p className="text-xl opacity-95">
             Berechne deine potenzielle Steuerersparnis durch innerehelichen Immobilienverkauf
           </p>
-        </div>
+        </header>
 
-        <div className="p-8">
+        <main className="p-8">
+          <article className="prose max-w-none mb-8 text-gray-700">
+            <p className="text-lg leading-relaxed">
+              Der Ehegattenschaukel-Rechner ermöglicht es Ihnen, schnell und einfach das Steuereinsparpotenzial durch einen innerehelichen Immobilienverkauf zu berechnen.
+              Bei dieser Strategie verkauft ein Ehepartner eine vermietete Immobilie nach Ablauf der Spekulationsfrist an den anderen Partner.
+              Durch die neue Abschreibungsbasis können erhebliche Steuervorteile erzielt werden.
+            </p>
+          </article>
+
           {!spekulationAbgelaufen && (
             <div className="bg-red-50 border-l-4 border-red-600 p-5 mb-8">
               <strong className="block text-red-600 font-bold mb-2 text-base">
@@ -535,8 +543,79 @@ function App() {
               </div>
             </div>
           )}
-        </div>
+        </main>
+
+        <section className="max-w-4xl mx-auto px-4 py-12">
+          <h2 className="text-3xl font-bold text-[#1c1e65] mb-8 text-center">
+            Häufig gestellte Fragen zum Ehegattenschaukel-Rechner
+          </h2>
+          <FAQSection />
+        </section>
       </div>
+    </div>
+  );
+}
+
+function FAQSection() {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  const faqs = [
+    {
+      question: "Was ist die Ehegattenschaukel?",
+      answer: "Die Ehegattenschaukel ist eine legale Steueroptimierungsstrategie für verheiratete GmbH-Gesellschafter. Durch die gezielte Verteilung von Gehältern und Gewinnausschüttungen zwischen beiden Ehepartnern können erhebliche Steuerersparnisse erzielt werden. Ein Ehepartner erhält primär ein Gehalt (was sozialversicherungs- und steuerpflichtig ist), während der andere Partner hauptsächlich Dividenden aus der GmbH bezieht (die niedriger besteuert werden)."
+    },
+    {
+      question: "Wie genau ist dieser Rechner?",
+      answer: "Der Rechner bietet eine fundierte Orientierung basierend auf aktuellen Steuersätzen und durchschnittlichen Parametern. Die tatsächliche Steuerersparnis hängt von individuellen Faktoren ab (z.B. weitere Einkünfte, Kinder, Freibeträge). Das Ergebnis sollte im Detail mit Ihrem persönlichen Steuerberater abgestimmt werden."
+    },
+    {
+      question: "Für wen eignet sich die Ehegattenschaukel?",
+      answer: "Die Strategie eignet sich besonders für verheiratete Paare, bei denen beide Partner Gesellschafter einer GmbH sind und ein gemeinsames Einkommen von mehr als 120.000 Euro pro Jahr erzielen. Je höher das Einkommen, desto größer ist in der Regel das Einsparpotenzial."
+    },
+    {
+      question: "Ist die Ehegattenschaukel legal?",
+      answer: "Ja, die Ehegattenschaukel ist bei korrekter Umsetzung vollkommen legal. Wichtig ist, dass die Gehaltsverteilung angemessen ist und beide Partner tatsächlich in der GmbH tätig sind. Eine professionelle Beratung durch Steuerexperten wie CAPRI stellt sicher, dass alle rechtlichen Anforderungen erfüllt werden."
+    },
+    {
+      question: "Welche Rolle spielen Sozialversicherungsbeiträge?",
+      answer: "Gehälter sind sozialversicherungspflichtig, Dividenden hingegen nicht. Dies ist ein wichtiger Aspekt der Ehegattenschaukel: Der Partner mit niedrigerem Gehalt zahlt weniger Sozialversicherungsbeiträge, was zusätzlich zu den Steuereinsparungen zur Gesamtersparnis beiträgt."
+    },
+    {
+      question: "Wie unterstützt CAPRI bei der Umsetzung?",
+      answer: "CAPRI unterstützt bei der strategischen Beratung, der rechtssicheren Umsetzung und der laufenden Betreuung. Unsere Experten analysieren Ihre individuelle Situation, entwickeln ein maßgeschneidertes Konzept und begleiten Sie bei der Implementierung sowie bei allen steuerrechtlichen Fragen."
+    }
+  ];
+
+  return (
+    <div className="space-y-4">
+      {faqs.map((faq, index) => (
+        <div key={index} className="border border-gray-300 bg-white overflow-hidden">
+          <button
+            onClick={() => setOpenIndex(openIndex === index ? null : index)}
+            className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
+            aria-expanded={openIndex === index}
+          >
+            <h3 className="text-lg font-semibold text-[#1c1e65] pr-4">
+              {faq.question}
+            </h3>
+            <ChevronDown
+              className={`flex-shrink-0 text-[#1c1e65] transition-transform duration-300 ${
+                openIndex === index ? 'rotate-180' : ''
+              }`}
+              size={24}
+            />
+          </button>
+          <div
+            className={`overflow-hidden transition-all duration-300 ${
+              openIndex === index ? 'max-h-96' : 'max-h-0'
+            }`}
+          >
+            <div className="px-6 py-4 bg-gray-50 text-gray-700 leading-relaxed">
+              {faq.answer}
+            </div>
+          </div>
+        </div>
+      ))}
     </div>
   );
 }
